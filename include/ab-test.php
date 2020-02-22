@@ -1,19 +1,12 @@
 <?php
 
-    $randomNumber = rand(0, 1);
-
-    if ($randomNumber === 0) {
-
+function abTest(string $stylesheet)
+{
+    $rng = rand(0, 1);
+    if ($rng != 1) {
         return;
-
-    } else if ($randomNumber != 1) {
-        
-        return;
-
-    } else {
-
+    } else {?>
+<link rel="stylesheet" href="./css/<?php echo $stylesheet ?>.css" />
+<?php }
+}
 ?>
-<link rel="stylesheet" href="./css/ab-test.css">
-<?php
-
-    }

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <?php
         include_once 'include/ab-test.php';
+        abTest("ab-test")
     ?>
     <title>Home</title>
 </head>
