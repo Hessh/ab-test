@@ -1,8 +1,8 @@
 <?php
 
+$randomNumber = rand(0, 1);
+
 function cookieSetter() {
-    
-    $randomNumber = rand(0, 1);
 
     //Hvis cookien er satt og den er lik control: ikke gjør noe
     if (isset($_COOKIE["variation_id"]) && $_COOKIE["variation_id"] != 1) {
@@ -24,11 +24,9 @@ function cookieSetter() {
     } else if (!isset($_COOKIE["variation_id"]) && $randomNumber === 1) {
 
         oneWeekCookie("variation_id", $randomNumber);
-
         return;
     }
 
-    return $randomNumber;
 }
 
 // Endre [.domenenavn.tld] til riktig domenenavn, ikke fjern punktum (Linje 41)

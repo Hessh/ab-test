@@ -1,5 +1,5 @@
 <?php 
-    include 'include/ab-test.php';
+    include_once 'include/ab-test.php';
     cookieSetter();
 ?>
 <!DOCTYPE html>
