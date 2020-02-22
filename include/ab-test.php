@@ -1,6 +1,6 @@
 <?php
 
-function abTest() {
+function cookieSetter() {
     
     $randomNumber = rand(0, 1);
 
@@ -11,10 +11,6 @@ function abTest() {
 
         //Hvis cookien er satt og den er lik variation: bytt side til variation
     } else if (isset($_COOKIE["variation_id"]) && $_COOKIE["variation_id"] === 1) {
-
-?>
-<link rel="stylesheet" href="./css/ab-test.css">
-<?php
 
         return;
 
@@ -29,16 +25,18 @@ function abTest() {
 
         oneWeekCookie("variation_id", $randomNumber);
 
-?>
-<link rel="stylesheet" href="./css/ab-test.css">
-<?php
-
         return;
     }
+
+    return $randomNumber;
 }
 
 // Endre [.domenenavn.tld] til riktig domenenavn, ikke fjern punktum (Linje 41)
 function oneWeekCookie($name, $value)
 {
     setcookie($name, $value, time() + 30, '/', '.hessh.no', true, true);
+}
+
+function abTest() {
+    echo $randomNumber;
 }
