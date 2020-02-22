@@ -1,33 +1,33 @@
 <?php
 
-$rng = rand(0, 1);
-
 function cookieSetter()
 {
-    $random = $rng;
+    $rng = rand(0, 1);
 
     //Hvis cookien er satt og den er lik control: ikke gjør noe
-    if (isset($_COOKIE["location_on"]) && $_COOKIE["location_on"] === 0) {
+    if (isset($_COOKIE["location_on"]) && $_COOKIE["location_on"] === "control") {
 
         return;
 
         //Hvis cookien er satt og den er lik variation: bytt side til variation
-    } else if (isset($_COOKIE["location_on"]) && $_COOKIE["location_on"] === 1) {
+    } else if (isset($_COOKIE["location_on"]) && $_COOKIE["location_on"] === "variation") {
 
         return;
 
         //Hvis cookien ikke er satt og randomNumber er 0: sett cookie til control
-    } else if (!isset($_COOKIE["location_on"]) && $random === 0) {
+    } else if (!isset($_COOKIE["location_on"]) && $rng === 0) {
 
-        oneHourCookie("location_on", "0");
+        oneHourCookie("location_on", "control");
         return;
 
         //Hvis cookien ikke er satt og randomNumber er 01: sett cookie til variation og bytt side til vatiation
-    } else if (!isset($_COOKIE["location_on"]) && $random === 1) {
+    } else if (!isset($_COOKIE["location_on"]) && $rng === 1) {
 
-        oneHourCookie("location_on", "1");
+        oneHourCookie("location_on", "variation");
         return;
     }
+
+    return $rng;
 }
 
 // Endre [.domenenavn.tld] til riktig domenenavn, ikke fjern punktum (Linje 41)
@@ -38,10 +38,9 @@ function oneHourCookie($name, $value)
 
 function abTest(string $stylesheet)
 {
-    $random = $rng;
-    if (!$random) {
+    if ($_COOKIE["location_on"] != "variation") {
         return;
-    } else {?>
+    } else if ($_COOKIE["location_on"] === "variation") {?>
 <link rel="stylesheet" href="./css/<?php echo $stylesheet ?>.css" />
 <?php }
 }
