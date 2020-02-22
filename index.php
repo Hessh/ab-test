@@ -1,5 +1,5 @@
 <?php 
-    include_once 'include/ab-test.php';
+    include 'include/ab-test.php';
     cookieSetter();
 ?>
 <!DOCTYPE html>
@@ -9,8 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <?php 
-        include_once 'include/ab-test.php';
+    <?php
         abTest();
     ?>
     <title>Home</title>

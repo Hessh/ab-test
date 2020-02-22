@@ -38,5 +38,9 @@ function oneWeekCookie($name, $value)
 }
 
 function abTest() {
-    echo $randomNumber;
+    if($randomNumber === 1) {
+?>
+<link rel="stylesheet" href="./css/ab-test.css">
+<?php
+    }
 }
