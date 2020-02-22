@@ -5,25 +5,25 @@ function cookieSetter()
     $rng = rand(0, 1);
 
     //Hvis cookien er satt og den er lik control: ikke gjør noe
-    if (isset($_COOKIE["location_on"]) && $_COOKIE["location_on"] === "control") {
+    if (isset($_COOKIE["stylesheet"]) && $_COOKIE["stylesheet"] === "control") {
 
         return;
 
         //Hvis cookien er satt og den er lik variation: bytt side til variation
-    } else if (isset($_COOKIE["location_on"]) && $_COOKIE["location_on"] === "variation") {
+    } else if (isset($_COOKIE["stylesheet"]) && $_COOKIE["stylesheet"] === "variation") {
 
         return;
 
         //Hvis cookien ikke er satt og randomNumber er 0: sett cookie til control
-    } else if (!isset($_COOKIE["location_on"]) && $rng === 0) {
+    } else if (!isset($_COOKIE["stylesheet"]) && $rng === 0) {
 
-        oneHourCookie("location_on", "control");
+        oneHourCookie("stylesheet", "control");
         return;
 
         //Hvis cookien ikke er satt og randomNumber er 01: sett cookie til variation og bytt side til vatiation
-    } else if (!isset($_COOKIE["location_on"]) && $rng === 1) {
+    } else if (!isset($_COOKIE["stylesheet"]) && $rng === 1) {
 
-        oneHourCookie("location_on", "variation");
+        oneHourCookie("stylesheet", "variation");
         return;
     }
 
@@ -38,9 +38,9 @@ function oneHourCookie($name, $value)
 
 function abTest(string $stylesheet)
 {
-    if ($_COOKIE["location_on"] != "variation") {
+    if ($_COOKIE["stylesheet"] != "variation") {
         return;
-    } else if ($_COOKIE["location_on"] === "variation") {?>
+    } else if ($_COOKIE["stylesheet"] === "variation") {?>
 <link rel="stylesheet" href="./css/<?php echo $stylesheet ?>.css" />
 <?php }
 }
