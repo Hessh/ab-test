@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <?php
+    // Parameteret er stylesheetet med stilene til variation
         abTest("ab-test");
     ?>
     <title>Home</title>

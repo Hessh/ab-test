@@ -18,13 +18,15 @@ function cookieSetter()
     } else if (!isset($_COOKIE["stylesheet"]) && $rng === 0) {
 
         oneHourCookie("stylesheet", "control");
-        return;
+        header("Refresh:0");
+        exit;
 
         //Hvis cookien ikke er satt og randomNumber er 01: sett cookie til variation og bytt side til vatiation
     } else if (!isset($_COOKIE["stylesheet"]) && $rng === 1) {
 
         oneHourCookie("stylesheet", "variation");
-        return;
+        header("Refresh:0");
+        exit;
     }
 
     return $rng;
@@ -33,7 +35,7 @@ function cookieSetter()
 // Endre [.domenenavn.tld] til riktig domenenavn, ikke fjern punktum (Linje 41)
 function oneHourCookie($name, $value)
 {
-    setcookie($name, $value, time() + 30, '/', '.hessh.no', true, true);
+    setcookie($name, $value, time() + 30, '/', '.domenenavn.tld', true, true);
 }
 
 function abTest(string $stylesheet)
@@ -42,7 +44,8 @@ function abTest(string $stylesheet)
         return;
     } else if ($_COOKIE["stylesheet"] === "variation") {?>
 <link rel="stylesheet" href="./css/<?php echo $stylesheet ?>.css" />
-<?php }
+<?php 
+    }
 }
 
 ?>
