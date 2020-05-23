@@ -1,5 +1,6 @@
 <?php
 
+// Funksjon som bestemmer hva cookien skal settes til
 function cookieSetter()
 {
     $rng = rand(0, 1);
@@ -9,7 +10,7 @@ function cookieSetter()
 
         return;
 
-        //Hvis cookien er satt og den er lik variation: bytt side til variation
+        //Hvis cookien er satt og den er lik variation: ikke gjør noe
     } else if (isset($_COOKIE["stylesheet"]) && $_COOKIE["stylesheet"] === "variation") {
 
         return;
@@ -21,7 +22,7 @@ function cookieSetter()
         header("Refresh:0");
         exit;
 
-        //Hvis cookien ikke er satt og randomNumber er 01: sett cookie til variation og bytt side til vatiation
+        //Hvis cookien ikke er satt og randomNumber er 1: sett cookie til variation
     } else if (!isset($_COOKIE["stylesheet"]) && $rng === 1) {
 
         oneHourCookie("stylesheet", "variation");
@@ -32,16 +33,20 @@ function cookieSetter()
     return $rng;
 }
 
+// Funksjon for å sette cookie
 // Endre [.domenenavn.tld] til riktig domenenavn, ikke fjern punktum (Linje 41)
 function oneHourCookie($name, $value)
 {
     setcookie($name, $value, time() + 30, '/', '.domenenavn.tld', true, true);
 }
 
+// Funksjon som bestemmer hvilke css som skal lastes inn
 function abTest(string $stylesheet)
 {
+    // Hvis cookie ikke er lik variation: ikke gjør noe
     if ($_COOKIE["stylesheet"] != "variation") {
         return;
+    // Hvis cookie er lik variation: last inn variation css
     } else if ($_COOKIE["stylesheet"] === "variation") {?>
 <link rel="stylesheet" href="./css/<?php echo $stylesheet ?>.css" />
 <?php 
