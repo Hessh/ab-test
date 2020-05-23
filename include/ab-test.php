@@ -4,7 +4,7 @@
 function cookieSetter()
 {
     $rng = rand(0, 1);
-
+    
     //Hvis cookien er satt og den er lik control: ikke gjør noe
     if (isset($_COOKIE["stylesheet"]) && $_COOKIE["stylesheet"] === "control") {
 
